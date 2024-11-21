@@ -11,8 +11,11 @@ def multiply(a, b):
 
 def divide(a, b):
     if b == 0:
-        raise ValueError("Cannot divide by zero!")
-    return a / b
+        return "Cannot divide by zero!"
+    elif b != 0:
+        return a / b
+    else:
+        pass
     
 def sine(angle):
     return math.sin(math.radians(angle))
@@ -21,4 +24,5 @@ def cosine(angle):
     return math.cos(math.radians(angle))
 
 def tangent(angle):
-    return math.tan(math.radians(angle))
+    if angle != 90:
+        return math.tan(math.radians(angle))

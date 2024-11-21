@@ -20,6 +20,11 @@ Feature: Calculator
     Given the calculator is initialized
     When I divide 10 by 2
     Then the result should be 5.0
+	
+  Scenario: Division by zero
+    Given the calculator is initialized
+    When I divide 10 by 0
+    Then the result should be Cannot divide by zero!	
 
   Scenario: Sine
     Given the calculator is initialized
