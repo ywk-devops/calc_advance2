@@ -40,20 +40,14 @@ jobs:
         with:
           name: behave-test-results
           path: behave-results/
-'''
+          
       # Step 6: Annotate Test Failures
-     - name: Annotate test failures
+      - name: Annotate test failures
         if: failure()
         uses: actions/github-script@v6
         with:
           script: |
             const fs = require('fs');
-            const path = require('path');
-            const resultsPath = path.join('behave-results', 'TESTS-Behave.xml');
-            if (fs.existsSync(resultsPath)) {
-              const results = fs.readFileSync(resultsPath, 'utf8');
-              core.setFailed(`Test Failures Detected:\n${results}`);
-            } else {
-              core.setFailed('Test results file not found: behave-results/TESTS-Behave.xml');
-            }
-'''
+            const results = fs.readFileSync('test-results.txt', 'utf8');
+            core.setFailed(`Test Failures Detected:\n${results}`);
+
