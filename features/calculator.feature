@@ -1,46 +1,37 @@
-Feature: Verify calculator functionalities
-    Scenario: Addition
-		Given I have a calculator
-		When I input + as the operation
-		And I input 10 as the first number
-		And I input 5 as the second number
-		Then the result should be 15
+Feature: Calculator
+  Validate all arithmetic and trigonometric operations provided by the calculator.
 
-    Scenario: Subtraction
-		Given I have a calculator
-		When I input - as the operation
-		And I input 10 as the first number
-		And I input 5 as the second number
-		Then the result should be 5
+  Scenario: Addition
+    Given the calculator is initialized
+    When I add 10 and 5
+    Then the result should be 15
 
-    Scenario: Multiplication
-		Given I have a calculator
-		When I input * as the operation
-		And I input 10 as the first number
-		And I input 5 as the second number
-		Then the result should be 50
+  Scenario: Subtraction
+    Given the calculator is initialized
+    When I subtract 10 from 20
+    Then the result should be 10
 
-    Scenario: Division
-		Given I have a calculator
-		When I input / as the operation
-		And I input 10 as the first number
-		And I input 5 as the second number
-		Then the result should be 2		
+  Scenario: Multiplication
+    Given the calculator is initialized
+    When I multiply 6 and 7
+    Then the result should be 42
 
-    Scenario: Trigonometry - cos
-		Given I have a calculator
-		When I input cos as the operation
-		And I input 0 as the first number
-		Then the result should be 1
+  Scenario: Division
+    Given the calculator is initialized
+    When I divide 10 by 2
+    Then the result should be 5.0
 
-    Scenario: Trigonometry - sin
-		Given I have a calculator
-		When I input sin as the operation
-		And I input 90 as the first number
-		Then the result should be 1
+  Scenario: Sine
+    Given the calculator is initialized
+    When I calculate the sine of 30
+    Then the result should be 0.5
 
-    Scenario: Trigonometry - tan
-		Given I have a calculator
-		When I input tan as the operation
-		And I input 45 as the first number
-		Then the result should be 0.9999999999999999				
+  Scenario: Cosine
+    Given the calculator is initialized
+    When I calculate the cosine of 60
+    Then the result should be 0.5
+
+  Scenario: Tangent
+    Given the calculator is initialized
+    When I calculate the tangent of 45
+    Then the result should be 1.0

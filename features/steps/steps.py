@@ -1,50 +1,51 @@
 from behave import *
-from calculator import calculate
-import math
+from calculator import add, subtract, multiply, divide, sine, cosine, tangent
 
-@given('I have a calculator')
-def step_given_calculator(context):
+@given('the calculator is initialized')
+def step_given_calculator_initialized(context):
     context.result = None
-    context.number_1 = None
-    context.number_2 = None
-    context.operation = None
 
-@when('I input {operation} as the operation')
-def step_when_input_operation(context, operation):
-    context.operation = operation
+@when('I add {a:d} and {b:d}')
+def step_when_add(context, a, b):
+    context.result = add(a, b)
 
-@when('I input {number_1:d} as the first number')
-def step_when_input_first_number(context, number_1):
-    context.number_1 = number_1
+@when('I subtract {a:d} from {b:d}')
+def step_when_subtract(context, a, b):
+    context.result = subtract(b, a)
 
-@when('I input {number_2:d} as the second number')
-def step_when_input_second_number(context, number_2):
-    context.number_2 = number_2
+@when('I multiply {a:d} and {b:d}')
+def step_when_multiply(context, a, b):
+    context.result = multiply(a, b)
+
+@when('I divide {a:d} by {b:d}')
+def step_when_divide(context, a, b):
+    try:
+        context.result = divide(a, b)
+    except ValueError as e:
+        context.result = str(e)
+
+@when('I calculate the sine of {angle:d}')
+def step_when_sine(context, angle):
+    context.result = round(sine(angle), 9)  # Rounding to avoid floating-point precision issues
+
+@when('I calculate the cosine of {angle:d}')
+def step_when_cosine(context, angle):
+    context.result = round(cosine(angle), 9)
+
+@when('I calculate the tangent of {angle:d}')
+def step_when_tangent(context, angle):
+    context.result = round(tangent(angle), 9)
 
 @then('the result should be {expected_result}')
-def step_then_verify_result(context, expected_result):
-    if context.operation == '+':
-        context.result = context.number_1 + context.number_2
-    elif context.operation == '-':
-        context.result = context.number_1 - context.number_2
-    elif context.operation == '*':
-        context.result = context.number_1 * context.number_2
-    elif context.operation == '/':
-        context.result = context.number_1 / context.number_2
-    elif context.operation == 'cos':
-        context.result = math.cos(math.radians(context.number_1))
-    elif context.operation == 'sin':
-        context.result = math.sin(math.radians(context.number_1))
-    elif context.operation == 'tan':
-        context.result = math.tan(math.radians(context.number_1))
-    else:
-        raise ValueError(f"Invalid operation: {context.operation}")
-
-    
-    # Ensure the result matches expected
+def step_then_result_should_be(context, expected_result):
+    # Handle floating-point results
     if isinstance(context.result, float):
-        assert math.isclose(context.result, float(expected_result), rel_tol=1e-9), \
-            f"Expected {expected_result}, got {context.result}"
+        expected_result = float(expected_result)
+        assert round(context.result, 9) == round(expected_result, 9), \
+            f"Expected {expected_result}, but got {context.result}"
     else:
-        assert context.result == int(expected_result), \
-            f"Expected {expected_result}, got {context.result}"
+        # Handle string and integer results
+        if expected_result.isdigit():
+            expected_result = int(expected_result)
+        assert context.result == expected_result, \
+            f"Expected {expected_result}, but got {context.result}"
