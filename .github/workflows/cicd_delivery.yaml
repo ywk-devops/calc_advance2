@@ -29,10 +29,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install behave boto3  # Add additional packages as needed
 
-      # Step 4: Extract additional repositories (optional)
-      - name: Clone additional test scripts
-        run: |
-          git clone https://github.com/example/test-scripts.git  # Update with your repository URL
+#      # Step 4: Extract additional repositories (optional)
+#      - name: Clone additional test scripts
+#        run: |
+#          git clone https://github.com/example/test-scripts.git  # Update with your repository URL
 
       # Step 5: Run Behave tests
       - name: Execute Behave tests
