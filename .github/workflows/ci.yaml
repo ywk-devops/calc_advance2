@@ -34,12 +34,12 @@ jobs:
         run: |
           behave features/ --junit --junit-directory=behave-results  # Specify the features folder and save results
 
-      # Step 5: Upload Behave test results (Optional)
+      # Step 5: Upload Behave test results
       - name: Upload Behave Test Results
         uses: actions/upload-artifact@v3
         with:
           name: behave-test-results
-          path: behave-results/
+          path: behave-results.txt
           
       # Step 6: Annotate Test Failures
       - name: Annotate test failures
@@ -48,6 +48,6 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const results = fs.readFileSync('test-results.txt', 'utf8');
+            const results = fs.readFileSync('behave-results.txt', 'utf8');
             core.setFailed(`Test Failures Detected:\n${results}`);
 
