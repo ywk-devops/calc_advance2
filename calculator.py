@@ -18,7 +18,7 @@ tan for tangent
 
     if operation == '+':
         print('{} + {} = '.format(number_1, number_2))
-        print(number_1 + number_2 +1)
+        print(number_1 + number_2)
 
     elif operation == '-':
         print('{} - {} = '.format(number_1, number_2))
@@ -72,4 +72,4 @@ Please type Y for YES or N for NO.
 
 
 # Call calculate() outside of the function  (enable after testing)
-# calculate()
+#calculate()
