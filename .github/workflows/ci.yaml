@@ -32,6 +32,7 @@ jobs:
       # Step 4: Run Behave tests from the features folder
       - name: Run Behave Tests
         run: |
+          mkdir -p behave-results  # Ensure the directory exists
           behave features/ --junit --junit-directory=behave-results  # Specify the features folder and save results
 
       # Step 5: Upload Behave test results
