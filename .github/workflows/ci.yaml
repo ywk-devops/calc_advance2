@@ -33,7 +33,7 @@ jobs:
       - name: Run Behave Tests
         run: |
           mkdir -p behave-results  # Ensure the directory exists
-          behave features/ --junit --junit-directory=behave-results  # Specify the features folder and save results
+          behave features/ --junit --junit-directory=behave-results  --no-capture --no-skipped --verbose # Specify the features folder and save results
 
       # Step 5: Upload Behave test results
       - name: Upload Behave Test Results
