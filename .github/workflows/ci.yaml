@@ -54,15 +54,15 @@ jobs:
           name: behave-test-results
           path: behave-results/
 
-      # Step 5c: Create Issue
+      # Step 5c: Publish Test Results
       - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/windows@v2
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
-            test-results\**\*.xml
-            test-results\**\*.trx
-            test-results\**\*.json     
+            test-results/**/*.xml
+            test-results/**/*.trx
+            test-results/**/*.json    
 
       # Step 6a: Create Issue
       - uses: actions/checkout@v4
