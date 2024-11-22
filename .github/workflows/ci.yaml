@@ -52,8 +52,8 @@ jobs:
           path: behave-results/
           
       # Step 6: Annotate Test Failures
-  #    - name: Annotate Test Failures
-  #      if: failure()
+      - name: Annotate Test Failures
+        if: failure()
         uses: actions/github-script@v6
         with:
           script: |
