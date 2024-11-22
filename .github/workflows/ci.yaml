@@ -40,8 +40,9 @@ jobs:
         run: |
           mkdir -p behave-results  # Ensure the directory exists
           behave features/ --junit --junit-directory=test-results # Specify the features folder and save results
-        # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose # Specify the features folder and save results
           ls
+        # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose
+
       # Step 5b: Upload Behave test results
       - name: Upload Behave Test Results
         if: always()
