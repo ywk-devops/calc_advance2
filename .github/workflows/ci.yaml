@@ -18,7 +18,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  #v3
       - name: print content of repo
         run: |
           ls
@@ -52,13 +52,14 @@ jobs:
           path: test-results/
     
       # Step 6a: Create Issue
-      - uses: actions/checkout@v4
+     # - uses: actions/checkout@v4
       - name: Create an issue
         if: failure()
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
           title: Behave Test Failed
+          assignees: ${{ github.actor }},${{ github.triggering_actor }}
           body: Bug in Program
           
       # Step 6b: Annotate Test Failures
