@@ -54,6 +54,7 @@ jobs:
       # Step 6a: Create Issue
       - name: Create an issue
         if: failure()
+        uses: actions/checkout@v4
         uses: dacbd/create-issue-action@main
         with:
       #   token: ${{ github.token }}
