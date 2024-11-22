@@ -52,9 +52,9 @@ jobs:
           path: behave-results/
 
       # Step 6a: Create Issue
+      - uses: actions/checkout@v4
       - name: Create an issue
         if: failure()
-        uses: actions/checkout@v4
         uses: dacbd/create-issue-action@main
         with:
       #   token: ${{ github.token }}
