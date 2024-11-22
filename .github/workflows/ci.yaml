@@ -12,6 +12,9 @@ jobs:
   behave-tests:
     runs-on: ubuntu-latest  # Use Linux OS
 
+    permissions:
+      issues: write
+
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -61,9 +64,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Simple test issue
           body: my new issue
-        permissions:
-          issues: write
-        
           
       # Step 6b: Annotate Test Failures
       - name: Annotate Test Failures
