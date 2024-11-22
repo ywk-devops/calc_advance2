@@ -50,8 +50,17 @@ jobs:
         with:
           name: behave-test-results
           path: behave-results/
+
+      # Step 6a: Create Issue
+      - name: Create an issue
+        if: failure()
+        uses: dacbd/create-issue-action@main
+        with:
+      #   token: ${{ github.token }}
+          title: Simple test issue
+          body: my new issue      
           
-      # Step 6: Annotate Test Failures
+      # Step 6b: Annotate Test Failures
       - name: Annotate Test Failures
         if: failure()
         uses: actions/github-script@v6
