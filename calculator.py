@@ -26,7 +26,7 @@ def cosine(angle):
 def tangent(angle):
     if angle != 90:
         return math.tan(math.radians(angle))
-        
+'''        
 while True:
     operation = input("Operation (+, -, *, /, cos, sin, tan): ")
 
@@ -73,4 +73,4 @@ while True:
         print('See you later.')
         break
         
-        
+'''        
