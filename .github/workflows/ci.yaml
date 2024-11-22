@@ -38,7 +38,7 @@ jobs:
       # Step 4: Run Behave tests from the features folder
       - name: Run Behave Tests
         run: |
-          mkdir -p behave-results  # Ensure the directory exists
+          mkdir -p test-results  # Ensure the directory exists
           behave features/ --junit --junit-directory=test-results # Specify the features folder and save results
           ls test-results/
         # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose
