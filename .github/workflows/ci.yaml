@@ -53,17 +53,7 @@ jobs:
         with:
           name: behave-test-results
           path: behave-results/
-
-      # Step 5c: Publish Test Results
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            behave-results/*.xml
-            behave-results/*.trx
-            behave-results/*.json    
-
+    
       # Step 6a: Create Issue
       - uses: actions/checkout@v4
       - name: Create an issue
