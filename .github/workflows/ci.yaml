@@ -19,6 +19,9 @@ jobs:
       # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: print content of repo
+        run: |
+          ls
 
       # Step 2: Setup Python environment
       - name: Setup Python
@@ -40,15 +43,15 @@ jobs:
         # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose # Specify the features folder and save results
 
       # Step 5a: Upload Behave test results if pass
-      - name: Upload Behave Test Results (Test Passed)
-        uses: actions/upload-artifact@v4
-        with:
-          name: behave-test-results
-          path: test-results/
+   #   - name: Upload Behave Test Results (Test Passed)
+   #     uses: actions/upload-artifact@v4
+   #     with:
+   #       name: behave-test-results
+   #       path: test-results/
           
       # Step 5b: Upload Behave test results if fail
       - name: Upload Behave Test Results (Test Failed)
-        if: failure()
+        if: always()  # failure()
         uses: actions/upload-artifact@v4
         with:
           name: behave-test-results
