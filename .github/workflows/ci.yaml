@@ -43,7 +43,7 @@ jobs:
           ls test-results/
         # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose
 
-      # Step 5b: Upload Behave test results
+      # Step 5: Upload Behave test results
       - name: Upload Behave Test Results
         if: always()
         uses: actions/upload-artifact@v4
@@ -52,13 +52,13 @@ jobs:
           path: test-results/
     
       # Step 6a: Create Issue
-     # - uses: actions/checkout@v4
       - name: Create an issue
         if: failure()
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
-          title: Behave Test Failed
+          title: |
+            [${{ github.workflow }}] failed during [${{ github.event_name }}]
           assignees: ${{ github.actor }},${{ github.triggering_actor }}
           body: Bug in Program
           
