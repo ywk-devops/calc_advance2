@@ -24,8 +24,10 @@ def cosine(angle):
     return math.cos(math.radians(angle))
 
 def tangent(angle):
-    if angle != 90:
+    if angle != 90 or angle != 270:
         return math.tan(math.radians(angle))
+    else:
+        return "90 degree is not allowed!"
 '''        
 while True:
     operation = input("Operation (+, -, *, /, cos, sin, tan): ")
