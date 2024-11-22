@@ -40,3 +40,8 @@ Feature: Calculator
     Given the calculator is initialized
     When I calculate the tangent of 45
     Then the result should be 1.0
+	
+  Scenario: Tangent 90
+    Given the calculator is initialized
+    When I calculate the tangent of 90
+    Then the result should be 90 degree is not allowed!
