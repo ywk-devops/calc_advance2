@@ -28,13 +28,17 @@ def tangent(angle):
         return math.tan(math.radians(angle))
     else:
         return "90 degree is not allowed!"
-'''        
+        
 while True:
-    operation = input("Operation (+, -, *, /, cos, sin, tan): ")
+#   operation = input("Operation (+, -, *, /, cos, sin, tan): ")
+#
+#   number_1 = int(input('Please enter the first number: '))
+#   if operation != 'cos' and operation != 'sin' and operation != 'tan':
+#       number_2 = int(input('Please enter the second number: '))
 
-    number_1 = int(input('Please enter the first number: '))
-    if operation != 'cos' and operation != 'sin' and operation != 'tan':
-        number_2 = int(input('Please enter the second number: '))
+    operation = '+'
+    number_1  = 10
+    number_2  = 10
 
     if operation == '+':
         print('{} + {} = '.format(number_1, number_2))
@@ -68,11 +72,12 @@ while True:
         print('You have not typed a valid operator, please run the program again.')
 
     # Take input from user
-    calc_again = input("Do you want to calculate again (Any key for YES or (N or n) for NO)? ")
+#   calc_again = input("Do you want to calculate again (Any key for YES or (N or n) for NO)? ")
+    calc_again = 'N'
 
     # If user types N, say good-bye to the user and end the program
     if calc_again == 'N' or calc_again == 'n':
         print('See you later.')
         break
+
         
-'''        
