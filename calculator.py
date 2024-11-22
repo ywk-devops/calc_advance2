@@ -26,3 +26,62 @@ def cosine(angle):
 def tangent(angle):
     if angle != 90:
         return math.tan(math.radians(angle))
+        
+while True:
+    operation = input('''
+Please type in the math operation you would like to complete:
++ for addition
+- for subtraction
+* for multiplication
+/ for division
+cos for cosine
+sin for sine
+tan for tangent
+''')
+
+    number_1 = int(input('Please enter the first number: '))
+    if operation != 'cos' and operation != 'sin' and operation != 'tan':
+        number_2 = int(input('Please enter the second number: '))
+
+    if operation == '+':
+        print('{} + {} = '.format(number_1, number_2))
+        print(add(number_1, number_2))
+
+    elif operation == '-':
+        print('{} - {} = '.format(number_1, number_2))
+        print(subtract(number_1, number_2))
+
+    elif operation == '*':
+        print('{} * {} = '.format(number_1, number_2))
+        print(multiply(number_1, number_2))
+
+    elif operation == '/':
+        print('{} / {} = '.format(number_1, number_2))
+        print(divide(number_1, number_2))
+
+    elif operation == 'cos':
+        print('cos({}) = '.format(number_1))
+        print(cosine(number_1))
+
+    elif operation == 'sin':
+        print('sin({}) = '.format(number_1))
+        print(sine(number_1))
+
+    elif operation == 'tan':
+        print('tan({}) = '.format(number_1))
+        print(tangent(number_1))        
+
+    else:
+        print('You have not typed a valid operator, please run the program again.')
+
+    # Take input from user
+    calc_again = input('''
+Do you want to calculate again?
+Please type any key for YES or (N or n) for NO.
+''')
+
+    # If user types N, say good-bye to the user and end the program
+    if calc_again == 'N' or calc_again == 'n':
+        print('See you later.')
+        break
+    
