@@ -1,4 +1,4 @@
-name: Behave Test Pipeline
+name: CI (Behave) Test Pipeline
 
 on:
   push:
