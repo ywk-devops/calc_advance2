@@ -59,6 +59,7 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const resultsPath = path.join('behave-results', 'TESTS-Behave.xml');
+      #     const resultsPath = path.join('behave-results', 'TESTS-Behave.xml');
+            const resultsPath = path.join('behave-results', 'TESTS-calculator.xml');
             const results = fs.readFileSync(resultsPath, 'utf8');
             core.setFailed(`Test Failures Detected:\n${results}`);
