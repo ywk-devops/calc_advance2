@@ -57,8 +57,7 @@ jobs:
         if: failure()
         uses: dacbd/create-issue-action@main
         with:
-      #   token: ${{ github.token }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
           title: Behave Test Failed
           body: Bug in Program
           
