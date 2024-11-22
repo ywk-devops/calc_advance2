@@ -51,7 +51,8 @@ jobs:
         if: always()
         with:
           files: |
-            test-results/TESTS-calculator.xml 
+            test-results/**/*.xml
+          # test-results/TESTS-calculator.xml 
 
       # Step 5b: Upload Behave test results
       - name: Upload Behave Test Results
