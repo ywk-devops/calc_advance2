@@ -60,9 +60,9 @@ jobs:
         if: always()
         with:
           files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json    
+            behave-results/*.xml
+            behave-results/*.trx
+            behave-results/*.json    
 
       # Step 6a: Create Issue
       - uses: actions/checkout@v4
