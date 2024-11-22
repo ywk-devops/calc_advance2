@@ -36,15 +36,15 @@ jobs:
       - name: Run Behave Tests
         run: |
           mkdir -p behave-results  # Ensure the directory exists
-          behave features/ --junit --junit-directory=behave-results # Specify the features folder and save results
-        # behave features/ --junit --junit-directory=behave-results  --no-capture --no-skipped --verbose # Specify the features folder and save results
+          behave features/ --junit --junit-directory=test-results # Specify the features folder and save results
+        # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose # Specify the features folder and save results
 
       # Step 5a: Upload Behave test results if pass
       - name: Upload Behave Test Results (Test Passed)
         uses: actions/upload-artifact@v4
         with:
           name: behave-test-results
-          path: behave-results/
+          path: test-results/
           
       # Step 5b: Upload Behave test results if fail
       - name: Upload Behave Test Results (Test Failed)
@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: behave-test-results
-          path: behave-results/
+          path: test-results/
     
       # Step 6a: Create Issue
       - uses: actions/checkout@v4
@@ -73,6 +73,6 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const resultsPath = path.join('behave-results', 'TESTS-calculator.xml');
+            const resultsPath = path.join('test-results', 'TESTS-calculator.xml');
             const results = fs.readFileSync(resultsPath, 'utf8');
             core.setFailed(`Test Failures Detected:\n${results}`);
