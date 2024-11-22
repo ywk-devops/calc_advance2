@@ -62,8 +62,8 @@ jobs:
         with:
       #   token: ${{ github.token }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: Simple test issue
-          body: my new issue
+          title: Behave Test Failed
+          body: Bug in Program
           
       # Step 6b: Annotate Test Failures
       - name: Annotate Test Failures
