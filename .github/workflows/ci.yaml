@@ -37,7 +37,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install behave
 
-      # Step 4: Run Behave Tests from the features folder
+      # Step 4: Run Tests from the features folder
       - name: Run Behave Tests
         run: |
           mkdir -p test-results  # Ensure the directory exists
@@ -52,7 +52,7 @@ jobs:
           name: behave-test-results
           path: test-results/ 
 
-      # Step 5b: Publish Behave test results
+      # Step 5b: Publish Test results
       - name: Publish Test Results
         if: always()
         uses: EnricoMi/publish-unit-test-result-action@v2
