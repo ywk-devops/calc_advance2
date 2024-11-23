@@ -37,15 +37,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install behave
 
-      # Step 4: Run Behave tests from the features folder
+      # Step 4: Run Behave Tests from the features folder
       - name: Run Behave Tests
         run: |
           mkdir -p test-results  # Ensure the directory exists
           behave features/ --junit --junit-directory=test-results # Specify the features folder and save results
           ls test-results/
-        # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose
 
-      # Step 5b: Upload Behave test results
+      # Step 5a: Upload Test results
       - name: Upload Behave Test Results
         if: always()
         uses: actions/upload-artifact@v4
@@ -53,10 +52,10 @@ jobs:
           name: behave-test-results
           path: test-results/         
 
-      # Step 5a: Publish Behave test results
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
+      # Step 5b: Publish Behave test results
+    # - name: Publish Test Results
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+    #   if: always()
         with:
           files: |
             test-results/**/*.xml 
