@@ -38,18 +38,18 @@ jobs:
           pip install behave
 
       # Step 4: Run Tests from the features folder
-      - name: Run Behave Tests
+      - name: Run Tests
         run: |
           mkdir -p test-results  # Ensure the directory exists
           behave features/ --junit --junit-directory=test-results # Specify the features folder and save results
           ls test-results/
 
       # Step 5a: Upload Test results
-      - name: Upload Behave Test Results
+      - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: behave-test-results
+          name: test-results
           path: test-results/ 
 
       # Step 5b: Publish Test results
