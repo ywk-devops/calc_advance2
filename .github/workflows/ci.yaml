@@ -45,14 +45,6 @@ jobs:
           ls test-results/
         # behave features/ --junit --junit-directory=test-results  --no-capture --no-skipped --verbose
 
-      # Step 5a: Publish Behave test results
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            test-results/**/*.xml 
-
       # Step 5b: Upload Behave test results
       - name: Upload Behave Test Results
         if: always()
@@ -60,6 +52,14 @@ jobs:
         with:
           name: behave-test-results
           path: test-results/         
+
+      # Step 5a: Publish Behave test results
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            test-results/**/*.xml 
     
       # Step 6a: Create Issue
       - name: Create an issue
