@@ -88,7 +88,7 @@ jobs:
             > and KemingHe's contribution.
             > **DO NOT** close this issue until resolved.
             
-      # Step 6b: Annotate Test Failures
+      # Step 6b: Annotate Test Failures (optional)
       - name: Annotate Test Failures
         if: failure()
         uses: actions/github-script@v6
