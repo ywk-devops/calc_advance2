@@ -111,5 +111,11 @@ jobs:
             const results = fs.readFileSync(resultsPath, 'utf8');
             core.setFailed(`Test Failures Detected:\n${results}`);
 
-      # Step 7: CD
+      # Step 7: CD (Prepare files for deployment)
+      - name: Prepare files
+        run: |
+          mkdir -p release
+          cp -r ./calulator_pre_release.py ./release/calculator.py
+          echo "Deployment files prepared."
+          ls -l ./release/
       
