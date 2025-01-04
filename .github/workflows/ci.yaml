@@ -98,6 +98,7 @@ jobs:
           curl -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
           -d chat_id="${TELEGRAM_CHAT_ID}" \
           -d text="Deployment Successful! Code pushed to the main branch."
+          export $TELEGRAM_BOT_TOKEN
             
       # Step 6c: Annotate Test Failures (optional)
       - name: Annotate Test Failures
