@@ -1,4 +1,4 @@
-name: CI Test (Behave) Pipeline
+name: CI Test (Behave) and CD Pipeline
 
 on:
   push:
