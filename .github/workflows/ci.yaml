@@ -87,8 +87,19 @@ jobs:
             > through `dacbd/create-issue-action@main` action
             > and KemingHe's contribution.
             > **DO NOT** close this issue until resolved.
+
+      # Step 6b: Send Telegram Message on failure
+      - name: Send Telegram Message
+      if: failure()
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: |
+        curl -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+        -d chat_id="${TELEGRAM_CHAT_ID}" \
+        -d text="Deployment Successful! Code pushed to the main branch."
             
-      # Step 6b: Annotate Test Failures (optional)
+      # Step 6c: Annotate Test Failures (optional)
       - name: Annotate Test Failures
         if: failure()
         uses: actions/github-script@v6
