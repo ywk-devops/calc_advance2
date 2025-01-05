@@ -133,4 +133,10 @@ jobs:
         run: |
           zip -r deployment_files.zip ./release
           mkdir -p artifacts
-          mv deployment_files.zip artifacts/          
+          mv deployment_files.zip artifacts/ 
+
+      - name: Upload zip file as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-archive
+          path: artifacts/deployment_files.zip          
