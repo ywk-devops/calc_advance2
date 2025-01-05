@@ -150,6 +150,6 @@ jobs:
         run: |
           zip -r calculator.zip ./release
           aws s3 cp ./release s3://release-to-all/calculator --recursive
-          aws s3 cp calculator.zip s3://release-to-all/calculator --recursive
+          aws s3 cp ./calculator.zip s3://release-to-all/calculator --recursive
           echo "calculator.py is available at: https://release-to-all.s3.ap-southeast-2.amazonaws.com/calculator/calculator.py"
           echo "calculator.zip is available at: https://release-to-all.s3.ap-southeast-2.amazonaws.com/calculator/calculator.zip"
