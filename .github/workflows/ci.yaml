@@ -89,7 +89,7 @@ jobs:
             > **DO NOT** close this issue until resolved.
 
       # Step 6b: Send Telegram Message on failure
-      - name: Send Telegram Message
+      - name: Send Telegram Message on Test Failure(s)
         if: failure()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -150,3 +150,13 @@ jobs:
         run: |
           aws s3 cp ./release s3://release-to-all/calculator --recursive
           echo "calculator.py is available at: https://release-to-all.s3.ap-southeast-2.amazonaws.com/calculator/calculator.py"
+
+      # Step 11: Send Telegram Message on Successful Application Deployment
+      - name: Send Telegram Message on Successful Deployment
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          curl -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          -d chat_id="${TELEGRAM_CHAT_ID}" \
+          -d text="Calculator.py successfully deployed to https://release-to-all.s3.ap-southeast-2.amazonaws.com/calculator/calculator.py"
