@@ -128,4 +128,9 @@ jobs:
         run: |
           aws s3 cp ./release s3://devops-calculator-app/release-files --recursive
 
-          
+      # Step 9: Download as zip and store in current action run
+      - name: Archive project files
+        run: |
+          zip -r deployment_files.zip ./release
+          mkdir -p artifacts
+          mv deployment_files.zip artifacts/          
